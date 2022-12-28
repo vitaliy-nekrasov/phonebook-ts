@@ -1,18 +1,19 @@
 import "./App.css";
-import { ContactForm } from "./components/ContactForm/ContactForm";
-import { Filter } from "./components/Filter/Filter";
-import { ContactList } from "./components/ContactList/ContactList";
-import { Title, Subtitle, Wrapper } from "./App.styled";
+// import { ContactForm } from "./components/ContactForm/ContactForm";
+// import { Filter } from "./components/Filter/Filter";
+// import { ContactList } from "./components/ContactList/ContactList";
+import { LogIn } from "./pages/LogIn/LogIn";
+import { RegisterForm } from "./pages/RegisterForm/RegisterForm";
+// import { Title, Subtitle, Wrapper } from "./App.styled";
+import { Route, Routes } from "react-router-dom";
 
 const App: React.FC = (): JSX.Element => {
   return (
-    <Wrapper>
-      <Title>Phonebook</Title>
-      <ContactForm />
-      <Subtitle>Contacts</Subtitle>
-      <Filter />
-      <ContactList />
-    </Wrapper>
+    <Routes>
+      <Route path="/" element={<LogIn />}>
+        <Route path="contacts" element={<RegisterForm />} />
+      </Route>
+    </Routes>
   );
 };
 
