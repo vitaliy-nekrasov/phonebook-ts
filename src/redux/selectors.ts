@@ -5,10 +5,10 @@ interface RootState {
   };
   auth: {
     user: {
-      name: string | null;
-      email: string | null;
+      name: string;
+      email: string;
     };
-    token: string | null;
+    token: string;
     isLoggedIn: boolean;
     isRefreshing: boolean;
   };

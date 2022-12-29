@@ -1,22 +1,30 @@
 import { Form, Label, Input, Button } from "./RegisterForm.styled";
 import { useDispatch } from "react-redux";
-// import authOperations from "redux/auth/authOperations";
-import { AppDispatch } from "../../redux/store";
+import authOperations from "../../redux/auth/authOperations";
+// import { AppDispatch } from "../../redux/store";
+import { useRef } from "react";
 
-export const RegisterForm: React.FC = (): JSX.Element => {
-  const dispatch: AppDispatch = useDispatch();
+type User = {
+  name: string;
+  email: string;
+  password: string;
+};
+
+const RegisterForm: React.FC = (): JSX.Element => {
+  const dispatch = useDispatch<any>();
+  const nameInput = useRef<HTMLInputElement>(null);
+  const emailInput = useRef<HTMLInputElement>(null);
+  const passwordInput = useRef<HTMLInputElement>(null);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    // e.preventDefault();
-    // const form = e.currentTarget;
-    // dispatch(
-    //   authOperations.register({
-    //     name: form.elements.name.value,
-    //     email: form.elements.email.value,
-    //     password: form.elements.password.value,
-    //   })
-    // );
-    // form.reset();
+    e.preventDefault();
+    const user: User = {
+      name: nameInput.current?.value!,
+      email: emailInput.current?.value!,
+      password: passwordInput.current?.value!,
+    };
+    dispatch(authOperations.register(user));
+    e.currentTarget.reset();
   };
 
   return (
@@ -24,18 +32,20 @@ export const RegisterForm: React.FC = (): JSX.Element => {
       <Form autoComplete="off" onSubmit={handleSubmit}>
         <Label>
           Name
-          <Input type="text" name="name" />
+          <Input type="text" name="name" ref={nameInput} />
         </Label>
         <Label>
           E-Mail
-          <Input type="email" name="email" />
+          <Input type="email" name="email" ref={emailInput} />
         </Label>
         <Label>
           Password
-          <Input type="password" name="password" />
+          <Input type="password" name="password" ref={passwordInput} />
         </Label>
         <Button type="submit">Sign Up</Button>
       </Form>
     </main>
   );
 };
+
+export default RegisterForm;

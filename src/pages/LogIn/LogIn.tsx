@@ -1,21 +1,28 @@
 import { Form, Label, Input, Button } from "./LogIn.styled";
 import { useDispatch } from "react-redux";
-// import authOperations from "redux/auth/authOperations";
-import { AppDispatch } from "../../redux/store";
+import authOperations from "../../redux/auth/authOperations";
+// import { AppDispatch } from "../../redux/store";
+import { useRef } from "react";
 
-export const LogIn: React.FC = (): JSX.Element => {
-  const dispatch: AppDispatch = useDispatch();
+type User = {
+  email: string;
+  password: string;
+};
+
+const LogIn: React.FC = (): JSX.Element => {
+  const dispatch = useDispatch<any>();
+  const emailInput = useRef<HTMLInputElement>(null);
+  const passwordInput = useRef<HTMLInputElement>(null);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    //   e.preventDefault();
-    //   const form = e.currentTarget;
-    //   dispatch(
-    //     authOperations.logIn({
-    //       email: form.elements.email.value,
-    //       password: form.elements.password.value,
-    //     })
-    //   );
-    //   form.reset();
+    e.preventDefault();
+
+    const user: User = {
+      email: emailInput.current?.value!,
+      password: passwordInput.current?.value!,
+    };
+    dispatch(authOperations.logIn(user));
+    e.currentTarget.reset();
   };
 
   return (
@@ -23,14 +30,16 @@ export const LogIn: React.FC = (): JSX.Element => {
       <Form autoComplete="off" onSubmit={handleSubmit}>
         <Label>
           E-Mail
-          <Input type="email" name="email" />
+          <Input type="email" name="email" ref={emailInput} />
         </Label>
         <Label>
           Password
-          <Input type="password" name="password" />
+          <Input type="password" name="password" ref={passwordInput} />
         </Label>
         <Button type="submit">Log In</Button>
       </Form>
     </main>
   );
 };
+
+export default LogIn;

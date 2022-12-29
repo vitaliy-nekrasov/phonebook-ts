@@ -18,7 +18,7 @@ root.render(
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <ThemeProvider theme={myTheme}>
-          <BrowserRouter>
+          <BrowserRouter basename="/phonebook-ts/">
             <App />
           </BrowserRouter>
         </ThemeProvider>

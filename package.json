@@ -2,7 +2,7 @@
   "name": "phonebook-typescript-2.0",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://vitaliy-nekrasov.github.io/phonebook-typescript-2.5/",
+  "homepage": "https://vitaliy-nekrasov.github.io/phonebook-ts/",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.1",
     "@testing-library/jest-dom": "^5.16.5",
@@ -19,6 +19,7 @@
     "notiflix": "^3.2.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-loader-spinner": "^5.3.4",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.6.1",
     "react-scripts": "5.0.1",

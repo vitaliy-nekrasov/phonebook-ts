@@ -13,21 +13,35 @@ const token = {
   },
 };
 
-const register = createAsyncThunk("auth/register", async (credentials) => {
-  try {
-    const { data } = await axios.post("/users/signup", credentials);
-    token.set(data.token);
-    return data;
-  } catch (error) {
-    console.log(error);
-    return Notify.failure("Sorry, this user already is registered!", {
-      timeout: 3000,
-      distance: "100px",
-    });
-  }
-});
+interface IUser {
+  name: string;
+  email: string;
+  password: string;
+}
 
-const logIn = createAsyncThunk("auth/login", async (credentials) => {
+type User = {
+  email: string;
+  password: string;
+};
+
+const register = createAsyncThunk(
+  "auth/register",
+  async (credentials: IUser) => {
+    try {
+      const { data } = await axios.post("/users/signup", credentials);
+      token.set(data.token);
+      return data;
+    } catch (error) {
+      console.log(error);
+      return Notify.failure("Sorry, this user already is registered!", {
+        timeout: 3000,
+        distance: "100px",
+      });
+    }
+  }
+);
+
+const logIn = createAsyncThunk("auth/login", async (credentials: User) => {
   try {
     const { data } = await axios.post("/users/login", credentials);
     token.set(data.token);
