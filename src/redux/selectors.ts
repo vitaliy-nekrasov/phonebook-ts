@@ -5,8 +5,8 @@ interface RootState {
   };
   auth: {
     user: {
-      name: string;
-      email: string;
+      name: string | null;
+      email: string | null;
     };
     token: string;
     isLoggedIn: boolean;

@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import authOperations from "./authOperations";
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import type { PayloadAction } from "@reduxjs/toolkit";
+// import type { PayloadAction } from "@reduxjs/toolkit";
 
 interface CounterState {
   user: {
@@ -24,10 +24,10 @@ const initialState = {
   isRefreshing: false,
 } as CounterState;
 
-interface IFetchCurrentUser {
-  name: string;
-  email: string;
-}
+// interface IFetchCurrentUser {
+//   name: null | string;
+//   email: null | string;
+// }
 
 export const authSlice = createSlice({
   name: "auth",
@@ -54,14 +54,11 @@ export const authSlice = createSlice({
       .addCase(authOperations.fetchCurrentUser.pending, (state) => {
         state.isRefreshing = true;
       })
-      .addCase(
-        authOperations.fetchCurrentUser.fulfilled,
-        (state, action: PayloadAction<IFetchCurrentUser>) => {
-          // state.user = { name: null, email: null };
-          state.isLoggedIn = true;
-          state.isRefreshing = false;
-        }
-      )
+      .addCase(authOperations.fetchCurrentUser.fulfilled, (state, action) => {
+        state.user = action.payload;
+        state.isLoggedIn = true;
+        state.isRefreshing = false;
+      })
       .addCase(authOperations.fetchCurrentUser.rejected, (state) => {
         state.isRefreshing = false;
       });
