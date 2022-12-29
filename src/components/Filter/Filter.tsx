@@ -1,11 +1,12 @@
 import { Label, Input } from "./Filter.styled";
 import { useDispatch, useSelector } from "react-redux";
-import { updateFilter, selectFilterValue } from "../../redux/contactSlice";
-import { AppDispatch } from "../../redux/store";
+import { updateFilter } from "../../redux/filterSlice";
+import { selectFilterValue } from "../../redux/selectors";
 
-export const Filter: React.FC = () => {
-  const dispatch: AppDispatch = useDispatch();
+const Filter = () => {
+  const dispatch = useDispatch();
   const value: string = useSelector(selectFilterValue);
+
   return (
     <Label>
       Find contacts by name
@@ -13,10 +14,11 @@ export const Filter: React.FC = () => {
         type="text"
         name="filter"
         value={value}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-          dispatch(updateFilter(e.target.value))
-        }
+        onChange={(e) => dispatch(updateFilter(e.target.value))}
+        autoComplete="off"
       />
     </Label>
   );
 };
+
+export default Filter;
