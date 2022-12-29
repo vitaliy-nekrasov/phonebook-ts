@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { lazy, Suspense, useEffect } from "react";
-import authOperations from "./redux/auth/authOperations";
+import { useSelector } from "react-redux";
+import { lazy, Suspense } from "react";
+// import authOperations from "./redux/auth/authOperations";
 import { selectIsRefreshing } from "./redux/selectors";
 
 const Navigation = lazy(() => import("./components/Navigation/Navigation"));
@@ -16,12 +16,12 @@ const PrivateRoute = lazy(
 );
 
 const App: React.FC = (): JSX.Element => {
-  const dispatch = useDispatch<any>();
+  // const dispatch = useDispatch<any>();
   const isRefreshing = useSelector(selectIsRefreshing);
 
-  useEffect(() => {
-    dispatch(authOperations.fetchCurrentUser());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(authOperations.fetchCurrentUser());
+  // }, [dispatch]);
 
   return (
     <>

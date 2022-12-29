@@ -64,24 +64,24 @@ const logOut = createAsyncThunk("auth/logout", async () => {
   }
 });
 
-const fetchCurrentUser = createAsyncThunk(
-  "auth/fetchCurrentUser",
-  async (_, thunkAPI) => {
-    const state: any = thunkAPI.getState();
-    const persistedToken = state.auth.token;
-    if (persistedToken === null) {
-      return thunkAPI.rejectWithValue("Error");
-    }
-    token.set(persistedToken);
-    try {
-      const { data } = await axios.get("/users/current");
-      console.log(data);
-      return data;
-    } catch (error) {
-      console.log(error);
-    }
-  }
-);
+// const fetchCurrentUser = createAsyncThunk(
+//   "auth/fetchCurrentUser",
+//   async (_, thunkAPI) => {
+//     const state: any = thunkAPI.getState();
+//     const persistedToken = state.auth.token;
+//     if (persistedToken === null) {
+//       return thunkAPI.rejectWithValue("Error");
+//     }
+//     token.set(persistedToken);
+//     try {
+//       const { data } = await axios.get("/users/current");
+//       console.log(data);
+//       return data;
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   }
+// );
 
-const operations = { register, logIn, logOut, fetchCurrentUser };
+const operations = { register, logIn, logOut };
 export default operations;
