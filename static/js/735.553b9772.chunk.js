@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkphonebook_typescript_2_0=self.webpackChunkphonebook_typescript_2_0||[]).push([[735],{7735:function(e,t,o){o.r(t);var n=o(8402),p=o(184);t.default=function(){return(0,p.jsx)(n.Nx,{width:"200",color:"#000000"})}}}]);
+//# sourceMappingURL=735.553b9772.chunk.js.map
