@@ -5,10 +5,12 @@ export const List = styled.ol`
 `;
 export const Item = styled.li`
   font-size: ${(p) => p.theme.fontSizes.s};
-  margin-bottom: ${(p) => p.theme.space[2]};
+  margin-bottom: ${(p) => p.theme.space[3]};
 `;
 export const Text = styled.p`
   display: inline-flex;
+  margin-top: 0;
+  margin-bottom: 0;
   margin-right: ${(p) => p.theme.space[3]};
 `;
 export const Button = styled.button`

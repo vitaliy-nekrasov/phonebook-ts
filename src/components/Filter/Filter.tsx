@@ -2,9 +2,10 @@ import { Label, Input } from "./Filter.styled";
 import { useDispatch, useSelector } from "react-redux";
 import { updateFilter } from "../../redux/filterSlice";
 import { selectFilterValue } from "../../redux/selectors";
+import { AppDispatch } from "../../redux/store";
 
-const Filter = () => {
-  const dispatch = useDispatch();
+const Filter: React.FC = (): JSX.Element => {
+  const dispatch: AppDispatch = useDispatch();
   const value: string = useSelector(selectFilterValue);
 
   return (

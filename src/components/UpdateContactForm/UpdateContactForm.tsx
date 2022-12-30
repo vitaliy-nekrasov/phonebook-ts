@@ -10,10 +10,15 @@ interface IProps {
   id: string;
 }
 
-const UpdateContactForm: React.FC<IProps> = ({ onClose, name, number, id }) => {
+const UpdateContactForm: React.FC<IProps> = ({
+  onClose,
+  name,
+  number,
+  id,
+}): JSX.Element => {
   const [updateContact] = useUpdateContactMutation();
-  const [nameValue, setNameValue] = useState(name);
-  const [numberValue, setNumberValue] = useState(number);
+  const [nameValue, setNameValue] = useState<string>(name);
+  const [numberValue, setNumberValue] = useState<string>(number);
 
   const handlerSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

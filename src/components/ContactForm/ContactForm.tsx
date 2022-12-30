@@ -23,10 +23,11 @@ const ContactForm: React.FC<IProps> = ({ onClose, contacts }) => {
       name: e.target.name.value,
       number: e.target.phone.value,
     };
-    const findContact = contacts.find((contact) =>
-      contact.name
-        .toLocaleLowerCase()
-        .includes(newContact.name.toLocaleLowerCase())
+    const findContact: IContact | undefined = contacts.find(
+      (contact: IContact) =>
+        contact.name
+          .toLocaleLowerCase()
+          .includes(newContact.name.toLocaleLowerCase())
     );
     if (findContact) {
       Notify.failure(`${newContact.name} is already in contacts.`, {

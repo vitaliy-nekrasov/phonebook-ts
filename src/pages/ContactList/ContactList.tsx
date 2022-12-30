@@ -7,6 +7,7 @@ import {
   useDeleteContactMutation,
 } from "../../redux/contactSlice";
 import { Notify } from "notiflix/build/notiflix-notify-aio";
+import { RootState } from "../../redux/selectors";
 
 const Loader = lazy(() => import("../../components/Loader/Loader"));
 const Filter = lazy(() => import("../../components/Filter/Filter"));
@@ -24,28 +25,29 @@ type Post = {
   id: string;
 };
 
-const ContactList: React.FC = () => {
-  const [showModal, setShowModal] = useState(false);
-  const [showChangeContactModal, setShowChangeContactModal] = useState(false);
-  const [name, setName] = useState("");
-  const [number, setNumber] = useState("");
-  const [id, setId] = useState("");
+const ContactList: React.FC = (): JSX.Element => {
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [showChangeContactModal, setShowChangeContactModal] =
+    useState<boolean>(false);
+  const [name, setName] = useState<string>("");
+  const [number, setNumber] = useState<string>("");
+  const [id, setId] = useState<string>("");
   const {
     data: contacts,
     isLoading,
     error,
   } = useGetContactsQuery({ url: "/contacts", method: "GET" });
   const [deleteContact] = useDeleteContactMutation();
-  const filter = useSelector(selectFilterValue);
+  const filter = useSelector<RootState, string>(selectFilterValue);
 
   const visibleContacts = (): Post[] => {
-    const normalizeFilter = filter.toLocaleLowerCase();
+    const normalizeFilter: string = filter.toLocaleLowerCase();
     return contacts?.filter((contact: any) =>
       contact.name.toLocaleLowerCase().includes(normalizeFilter)
     );
   };
 
-  const handleDeleteContact = (id: string) => {
+  const handleDeleteContact = (id: string): void => {
     deleteContact(id);
     Notify.success("Delete contact success!", {
       timeout: 3000,

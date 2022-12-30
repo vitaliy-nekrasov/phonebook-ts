@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { lazy, Suspense, useEffect } from "react";
 import authOperations from "./redux/auth/authOperations";
 import { selectIsRefreshing } from "./redux/selectors";
+import { Wrapper } from "./App.styled";
+import { RootState } from "./redux/selectors";
 
 const Navigation = lazy(() => import("./components/Navigation/Navigation"));
 const ContactList = lazy(() => import("./pages/ContactList/ContactList"));
@@ -17,14 +19,14 @@ const PrivateRoute = lazy(
 
 const App: React.FC = (): JSX.Element => {
   const dispatch = useDispatch<any>();
-  const isRefreshing = useSelector(selectIsRefreshing);
+  const isRefreshing = useSelector<RootState, boolean>(selectIsRefreshing);
 
   useEffect(() => {
     dispatch(authOperations.fetchCurrentUser());
   }, [dispatch]);
 
   return (
-    <div>
+    <Wrapper>
       {!isRefreshing && (
         <Suspense fallback={null}>
           <Routes>
@@ -60,7 +62,7 @@ const App: React.FC = (): JSX.Element => {
           </Routes>
         </Suspense>
       )}
-    </div>
+    </Wrapper>
   );
 };
 

@@ -1,7 +1,6 @@
 import { Form, Label, Input, Button } from "./LogIn.styled";
 import { useDispatch } from "react-redux";
 import authOperations from "../../redux/auth/authOperations";
-// import { AppDispatch } from "../../redux/store";
 import { useRef } from "react";
 
 type User = {

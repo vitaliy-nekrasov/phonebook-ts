@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 import authOperations from "./authOperations";
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-// import type { PayloadAction } from "@reduxjs/toolkit";
 
 interface CounterState {
   user: {
@@ -23,11 +22,6 @@ const initialState = {
   isLoggedIn: false,
   isRefreshing: false,
 } as CounterState;
-
-// interface IFetchCurrentUser {
-//   name: null | string;
-//   email: null | string;
-// }
 
 export const authSlice = createSlice({
   name: "auth",

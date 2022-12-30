@@ -1,4 +1,4 @@
-interface RootState {
+export interface RootState {
   contacts: object;
   filter: {
     value: string;

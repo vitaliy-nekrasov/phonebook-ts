@@ -17,7 +17,7 @@ export const StyledLinkContacts = styled(NavLink)`
   text-decoration: none;
   display: inline-block;
   padding: ${(p) => p.theme.space[3]} ${(p) => p.theme.space[4]};
-  line-height: ${(p) => p.theme.space[5]};
+  line-height: 42px;
   border: ${(p) => p.theme.borders.normal};
   border-radius: ${(p) => p.theme.space[5]};
   font-size: ${(p) => p.theme.space[4]};

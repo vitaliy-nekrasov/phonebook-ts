@@ -1,5 +1,7 @@
 import { InfinitySpin } from "react-loader-spinner";
 
-export default function Loader() {
+const Loader: React.FC = (): JSX.Element => {
   return <InfinitySpin width="200" color="#000000" />;
-}
+};
+
+export default Loader;

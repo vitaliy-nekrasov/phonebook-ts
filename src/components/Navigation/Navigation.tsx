@@ -13,7 +13,7 @@ import { Suspense, lazy } from "react";
 
 const UserMenu = lazy(() => import("../UserMenu/UserMenu"));
 
-const Navigation: React.FC = () => {
+const Navigation: React.FC = (): JSX.Element => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   return (
     <div>

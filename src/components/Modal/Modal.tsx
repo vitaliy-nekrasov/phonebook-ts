@@ -11,7 +11,7 @@ interface IProps {
 
 const Modal: React.FC<IProps> = ({ children, onClose }) => {
   useEffect(() => {
-    function handleKeyDown(e: any) {
+    function handleKeyDown(e: KeyboardEvent) {
       if (e.code === "Escape") {
         onClose();
       }
@@ -22,7 +22,7 @@ const Modal: React.FC<IProps> = ({ children, onClose }) => {
     };
   }, [onClose]);
 
-  const handleBackdropClick = (e: any) => {
+  const handleBackdropClick = (e: React.MouseEvent) => {
     if (e.currentTarget === e.target) {
       onClose();
     }

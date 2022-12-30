@@ -8,6 +8,7 @@ export const Form = styled.form`
   margin-bottom: ${(p) => p.theme.space[4]};
   width: ${(p) => p.theme.space[9]};
   padding: ${(p) => p.theme.space[3]};
+  background-color: ${(p) => p.theme.colors.white};
 `;
 export const Label = styled.label`
   display: flex;

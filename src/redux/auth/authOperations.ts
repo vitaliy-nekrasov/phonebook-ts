@@ -13,20 +13,20 @@ const token = {
   },
 };
 
-interface IUser {
+interface IRegisterUser {
   name: string;
   email: string;
   password: string;
 }
 
-type User = {
+interface ILogInUser {
   email: string;
   password: string;
-};
+}
 
 const register = createAsyncThunk(
   "auth/register",
-  async (credentials: IUser) => {
+  async (credentials: IRegisterUser) => {
     try {
       const { data } = await axios.post("/users/signup", credentials);
       token.set(data.token);
@@ -41,19 +41,25 @@ const register = createAsyncThunk(
   }
 );
 
-const logIn = createAsyncThunk("auth/login", async (credentials: User) => {
-  try {
-    const { data } = await axios.post("/users/login", credentials);
-    token.set(data.token);
-    return data;
-  } catch (error) {
-    console.log(error);
-    return Notify.failure("Sorry, but I don`t find this user! Please Sign Up", {
-      timeout: 3000,
-      distance: "100px",
-    });
+const logIn = createAsyncThunk(
+  "auth/login",
+  async (credentials: ILogInUser) => {
+    try {
+      const { data } = await axios.post("/users/login", credentials);
+      token.set(data.token);
+      return data;
+    } catch (error) {
+      console.log(error);
+      return Notify.failure(
+        "Sorry, but I don`t find this user! Please Sign Up",
+        {
+          timeout: 3000,
+          distance: "100px",
+        }
+      );
+    }
   }
-});
+);
 
 const logOut = createAsyncThunk("auth/logout", async () => {
   try {
@@ -68,7 +74,6 @@ const fetchCurrentUser = createAsyncThunk(
   "auth/fetchCurrentUser",
   async (_, thunkAPI) => {
     const state: any = thunkAPI.getState();
-    console.log(state);
     const persistedToken = state.auth.token;
     if (persistedToken === null) {
       return thunkAPI.rejectWithValue("Error");
