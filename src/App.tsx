@@ -24,7 +24,7 @@ const App: React.FC = (): JSX.Element => {
   }, [dispatch]);
 
   return (
-    <>
+    <div>
       {!isRefreshing && (
         <Suspense fallback={null}>
           <Routes>
@@ -60,7 +60,7 @@ const App: React.FC = (): JSX.Element => {
           </Routes>
         </Suspense>
       )}
-    </>
+    </div>
   );
 };
 
