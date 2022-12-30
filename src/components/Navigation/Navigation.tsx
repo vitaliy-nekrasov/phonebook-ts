@@ -6,6 +6,7 @@ import {
   Title,
   Wrapper,
   StyledLinkContacts,
+  LinkWrapper,
 } from "./Navigation.styled";
 import { useSelector } from "react-redux";
 import { selectIsLoggedIn } from "../../redux/selectors";
@@ -26,10 +27,10 @@ const Navigation: React.FC = (): JSX.Element => {
               <UserMenu />
             </Wrapper>
           ) : (
-            <div>
+            <LinkWrapper>
               <StyledLink to="/register">Sign Up</StyledLink>
               <StyledLink to="/login">Log In</StyledLink>
-            </div>
+            </LinkWrapper>
           )}
         </Nav>
       </Header>

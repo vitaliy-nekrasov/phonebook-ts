@@ -4,11 +4,16 @@ export const Wrapper = styled.div`
   display: flex;
   align-items: center;
 `;
+
 export const User = styled.p`
   margin-right: ${(p) => p.theme.space[3]};
   font-size: 20px;
   font-style: italic;
+  @media screen and (max-width: 768px) {
+    margin-right: ${(p) => p.theme.space[2]};
+  }
 `;
+
 export const Button = styled.button`
   text-decoration: none;
   display: inline-block;
@@ -28,5 +33,9 @@ export const Button = styled.button`
   &:hover,
   &:focus {
     background: ${(p) => p.theme.colors.red};
+  }
+  @media screen and (max-width: 768px) {
+    padding: ${(p) => p.theme.space[2]} ${(p) => p.theme.space[3]};
+    font-size: 14px;
   }
 `;

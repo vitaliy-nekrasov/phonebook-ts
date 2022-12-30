@@ -11,6 +11,9 @@ export const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 export const StyledLinkContacts = styled(NavLink)`
@@ -37,6 +40,10 @@ export const StyledLinkContacts = styled(NavLink)`
   &.active {
     background: ${(p) => p.theme.colors.green};
   }
+  @media screen and (max-width: 768px) {
+    margin-right: 0;
+    margin-bottom: ${(p) => p.theme.space[2]};
+  }
 `;
 
 export const StyledLink = styled(NavLink)`
@@ -54,6 +61,11 @@ export const StyledLink = styled(NavLink)`
   color: ${(p) => p.theme.colors.black};
   background: ${(p) => p.theme.colors.white};
   transition: 0.3s;
+  @media screen and (max-width: 768px) {
+    width: 90px;
+    letter-spacing: ${(p) => p.theme.space[1]};
+    font-size: ${(p) => p.theme.space[4]};
+  }
   cursor: pointer;
   &:hover,
   &:focus {
@@ -64,10 +76,24 @@ export const StyledLink = styled(NavLink)`
   }
   &:not(:last-child) {
     margin-right: ${(p) => p.theme.space[3]};
+    @media screen and (max-width: 768px) {
+      margin-bottom: ${(p) => p.theme.space[2]};
+      margin-right: ${(p) => p.theme.space[0]};
+    }
   }
 `;
 
 export const Title = styled.h1``;
 export const Wrapper = styled.div`
   display: flex;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
+`;
+
+export const LinkWrapper = styled.div`
+  @media screen and (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;

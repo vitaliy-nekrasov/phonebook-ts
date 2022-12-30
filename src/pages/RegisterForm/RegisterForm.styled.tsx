@@ -8,6 +8,9 @@ export const Form = styled.form`
   margin-bottom: ${(p) => p.theme.space[4]};
   width: ${(p) => p.theme.space[9]};
   padding: ${(p) => p.theme.space[3]};
+  @media screen and (max-width: 768px) {
+    width: calc(100% - 18px);
+  }
 `;
 export const Label = styled.label`
   display: flex;

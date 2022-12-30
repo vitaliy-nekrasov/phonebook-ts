@@ -9,6 +9,9 @@ export const Form = styled.form`
   width: ${(p) => p.theme.space[9]};
   padding: ${(p) => p.theme.space[3]};
   background-color: ${(p) => p.theme.colors.white};
+  @media screen and (max-width: 768px) {
+    width: calc(100% - 18px);
+  }
 `;
 export const Label = styled.label`
   display: flex;

@@ -2,16 +2,27 @@ import styled from "styled-components";
 
 export const List = styled.ol`
   margin-left: ${(p) => p.theme.space[4]};
+  @media screen and (max-width: 768px) {
+    margin-left: 0;
+    padding-left: 0;
+  }
 `;
 export const Item = styled.li`
   font-size: ${(p) => p.theme.fontSizes.s};
   margin-bottom: ${(p) => p.theme.space[3]};
+  @media screen and (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 export const Text = styled.p`
   display: inline-flex;
   margin-top: 0;
   margin-bottom: 0;
   margin-right: ${(p) => p.theme.space[3]};
+  @media screen and (max-width: 768px) {
+    margin-bottom: ${(p) => p.theme.space[3]};
+  }
 `;
 export const Button = styled.button`
   text-decoration: none;
@@ -29,6 +40,9 @@ export const Button = styled.button`
   background: ${(p) => p.theme.colors.white};
   transition: 0.3s;
   cursor: pointer;
+  @media screen and (max-width: 768px) {
+    width: 280px;
+  }
   &:hover,
   &:focus {
     background: ${({ children, theme }) => {
@@ -46,6 +60,10 @@ export const Button = styled.button`
   }
   &:not(:last-child) {
     margin-right: ${(p) => p.theme.space[3]};
+    @media screen and (max-width: 768px) {
+      margin-bottom: ${(p) => p.theme.space[2]};
+      margin-right: 0;
+    }
   }
 `;
 
